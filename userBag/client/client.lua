@@ -43,11 +43,12 @@ AddEventHandler("Bag:Client:GuardarAmbulanceBag", function()
 end)
 
 local citizenid = nil
+RegisterNetEvent("Bag:Client:StorageAmbulanceBag)
 AddEventHandler("Bag:Client:StorageAmbulanceBag", function()
-    local charinfo = RSGCore.Functions.GetPlayerData().charinfo
-    citizenid = RSGCore.Functions.GetPlayerData().citizenid
-    TriggerEvent("inventory:client:SetCurrentStash", " Bag",citizenid)
-    TriggerServerEvent("inventory:server:OpenInventory", "stash", " Bag",citizenid, {
+    RSGCore.Functions.GetPlayerData(PlayerData)
+    citizenid = PlayerData.citizenid
+    TriggerEvent("inventory:client:SetCurrentStash", " Bag"..citizenid)
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", " Bag"..citizenid, {
         maxweight = 40000,
         slots = 48,
     })
